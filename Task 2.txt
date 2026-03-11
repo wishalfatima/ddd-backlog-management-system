@@ -1,0 +1,96 @@
+
+1. USE CASE DIAGRAM
+
+
+@startuml
+left to right direction
+actor ProductOwner
+actor Developer
+actor ScrumMaster
+
+rectangle BacklogSystem {
+    ProductOwner --> (Add Backlog Item)
+    ProductOwner --> (Update Backlog Item)
+    ProductOwner --> (Assign Backlog Item to Release)
+    ProductOwner --> (Assign Backlog Item to Product)
+    ScrumMaster --> (Assign Backlog Item to Sprint)
+    Developer --> (View Backlog Item)
+    Developer --> (View Related Release Items)
+}
+@enduml
+
+
+2. UML COMPONENT DIAGRAM
+
+
+@startuml
+package "Backlog System" {
+  [Backlog Component] --> [Product Management Service]
+  [Backlog Component] --> [Release Management Service]
+  [Backlog Component] --> [Sprint Management Service]
+}
+
+[Product Management Service] --> [Product Context]
+[Release Management Service] --> [Release Context]
+[Sprint Management Service] --> [Sprint Context]
+
+note right of [Backlog Component]
+  Handles BacklogItem creation, update,
+  and assignment to Product, Release, Sprint.
+end note
+@enduml
+
+
+3. UML CLASS DIAGRAM
+
+@startuml
+
+class BacklogSystem {
+    +addBacklogItem(item: BacklogItem): void
+    +updateBacklogItem(itemId: string, updatedItem: BacklogItem): void
+    +assignToProduct(itemId: string, productId: string): void
+    +assignToRelease(itemId: string, releaseId: string): void
+    +assignToSprint(itemId: string, sprintId: string): void
+    +viewBacklogItem(itemId: string): BacklogItem
+    +getRelatedReleaseItems(itemId: string): List<ReleaseItem>
+}
+
+class BacklogItem {
+    +id: string
+    +summary: string
+    +story: string
+    +storyPoints: int
+    +type: string
+    +status: string
+}
+
+class ReleaseItem {
+    +id: string
+  
+}
+
+class Product {
+    +id: string
+}
+
+class Sprint {
+    +id: string
+}
+
+
+
+class ProductOwner
+class ScrumMaster
+class Developer
+
+ProductOwner --> BacklogSystem : uses
+ScrumMaster --> BacklogSystem : uses
+Developer --> BacklogSystem : uses
+
+BacklogSystem --> BacklogItem
+BacklogItem "*" --> "1" Product 
+BacklogItem "*" --> "1" ReleaseItem
+BacklogItem "*" --> "1" Sprint
+
+@enduml
+  
