@@ -108,23 +108,6 @@ The project includes the following models:
 
 These models were created using PlantUML.
 
-## Project Diagrams
-
-### Use Case Diagram
-
-![Use Case Diagram](images/UseCase%20Diagram.png)
-
-### UML Class Diagram
-
-![UML Class Diagram](images/UML%20Class%20Diagam.png)
-
-### UML Component Diagram
-
-![UML Component Diagram](images/UML%20component%20Diagram.png)
-
-### Domain Context Map
-
-![DDD Context Map](images/DDD%20Context%20Map.jpg)
 
 ## Java Implementation
 
