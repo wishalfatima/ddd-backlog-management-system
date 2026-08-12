@@ -1,128 +1,176 @@
 # Domain-Driven Design Backlog Management System
 
+A Java-based prototype demonstrating Domain-Driven Design (DDD), backlog domain modeling, stakeholder analysis, UML modeling, and the 4+1 Architectural View Model.
+
 ## Project Overview
-This project demonstrates a **Domain-Driven Design (DDD) implementation in Java** based on a backlog management domain model.  
-The project also applies the **4+1 Architectural View Model** and UML modeling to represent system structure, interactions, and components.
 
-The system models a backlog system used in agile development environments where product owners, developers, and scrum masters interact with backlog items.
+This project models a backlog management system used in an Agile software development environment.
 
-The goal of this project is to:
-- Implement a **DDD-based domain model in Java**
-- Model system architecture using the **4+1 View Model**
-- Represent system diagrams using **PlantUML**
+The project focuses on identifying the main stakeholders, defining their interactions with the backlog system, modeling domain concepts, and representing the system architecture through UML diagrams.
 
----
+The prototype is implemented in Java and uses Domain-Driven Design concepts to represent a backlog, backlog items, tasks, and estimation information.
 
-# Features
+## Business Context
 
-The system supports the following backlog management operations:
+The system represents a backlog management domain in which different Agile stakeholders interact with backlog items.
 
-- Add Backlog Item
-- Update Backlog Item
-- View Backlog Item
-- Assign Backlog Item to Product
-- Assign Backlog Item to Release
-- Assign Backlog Item to Sprint
-- View Related Release Items
+The main stakeholders are:
 
----
+- Product Owner
+- Scrum Master
+- Developer
 
-# Actors
+### Key Business Activities
 
-The system supports three main actors:
-
-**Product Owner**
 - Add backlog items
 - Update backlog items
+- View backlog items
 - Assign backlog items to products
 - Assign backlog items to releases
-
-**Scrum Master**
 - Assign backlog items to sprints
-
-**Developer**
-- View backlog items
 - View related release items
 
----
+## Stakeholders
 
-# Domain-Driven Design (DDD)
+| Stakeholder | Responsibilities |
+| --- | --- |
+| Product Owner | Adds and updates backlog items and assigns them to products and releases |
+| Scrum Master | Assigns backlog items to sprints |
+| Developer | Views backlog items and related release information |
 
-The system follows Domain-Driven Design principles:
+## Domain-Driven Design
+
+The project applies Domain-Driven Design concepts to model the backlog management domain.
 
 ### Core Domain
-Backlog Management
 
-### Main Domain Entities
+**Backlog Management**
+
+### Main Domain Concepts
+
 - Backlog
-- BacklogItem
+- Backlog Item
 - Task
-- ProductID
-- ReleaseID
-- SprintID
+- Estimation Log Entry
 
-The IDs represent references to external services.
+### External Domain References
 
-In a full system implementation these would refer to actual:
-- Product objects
-- Release objects
-- Sprint objects
+The backlog item also contains identifiers representing relationships with:
 
-However, in this prototype they are represented as identifiers only.
+- Product
+- Release
+- Sprint
 
----
+In this prototype, these are represented using identifiers rather than separate implemented domain classes.
 
-# External Services
+## External Services
 
-The backlog system interacts with external services through REST APIs:
+The conceptual system interacts with the following external service areas:
 
 - **Product Management Service**
 - **Release Management Service**
 - **Sprint Management Service**
 
-These services provide information about products, releases, and sprints.
+These services are represented in the architectural models as external system boundaries. Their REST APIs are not implemented in this prototype.
 
----
+## 4+1 Architectural View Model
 
-# 4+1 View Model
-
-The system architecture is designed using the **4+1 Architectural View Model**.
+The project applies the **4+1 Architectural View Model** to represent different perspectives of the system.
 
 ### Logical View
-Represents the **domain model and class structure** using UML class diagrams.
+
+Represents the domain model, entities, and relationships using a UML class diagram.
 
 ### Development View
-Represents the **system components and their organization** using UML component diagrams.
+
+Represents system components and their relationships using a UML component diagram.
 
 ### Process View
-(Not deeply implemented in this prototype.)
+
+The process view was considered as part of the architectural model but was not deeply implemented in this prototype.
 
 ### Physical View
-(Not required for this prototype.)
+
+The physical/deployment view is outside the scope of this prototype.
 
 ### Use Case View (+1)
-Represents system functionality using a **Use Case Diagram**.
 
----
+Represents system functionality and stakeholder interactions through a UML use case diagram.
 
-# Implemented Diagrams
+## UML & Domain Models
 
-The following UML diagrams were created using **PlantUML**:
+The project includes the following models:
 
 - Use Case Diagram
-- UML Class Diagram (DDD Logical View)
-- Component Diagram (Development View)
-- Domain Context Map (DDD)
+- UML Class Diagram
+- UML Component Diagram
+- Domain Context Map
 
-PlantUML was used to generate these diagrams programmatically.
+These models were created using PlantUML.
 
-Tool used:  
-https://www.plantuml.com  
-Interactive editor:  
-https://www.planttext.com
+## Project Diagrams
 
----
+### Use Case Diagram
 
-# Project Structure
+![Use Case Diagram](images/UseCase%20Diagram.png)
 
-Example structure of the project:
+### UML Class Diagram
+
+![UML Class Diagram](images/UML%20Class%20Diagam.png)
+
+### UML Component Diagram
+
+![UML Component Diagram](images/UML%20component%20Diagram.png)
+
+### Domain Context Map
+
+![DDD Context Map](images/DDD%20Context%20Map.jpg)
+
+## Java Implementation
+
+The Java prototype demonstrates the domain model through classes including:
+
+- `Backlog`
+- `BacklogItem`
+- `Task`
+- `EstimationLogEntry`
+
+The implementation demonstrates relationships between backlog items and tasks, as well as the use of identifiers to represent relationships with external domain areas.
+
+## Business & Process Analysis Perspective
+
+This project also demonstrates skills relevant to business and process analysis, including:
+
+- Stakeholder identification
+- Requirements and use case analysis
+- Business activity identification
+- Domain modeling
+- System boundary identification
+- Mapping relationships between business domains
+- Translating business requirements into technical models
+- UML-based system visualization
+
+## Technologies & Methods
+
+- Java
+- Domain-Driven Design (DDD)
+- UML
+- PlantUML
+- 4+1 Architectural View Model
+- Use Case Analysis
+- Domain Modeling
+
+## Project Structure
+
+```text
+ddd-backlog-management-system/
+│
+├── README.md
+├── .gitignore
+├── Main.java
+│
+└── images/
+    ├── DDD Context Map.jpg
+    ├── UML Class Diagam.png
+    ├── UML component Diagram.png
+    └── UseCase Diagram.png
